@@ -1,0 +1,13 @@
+Programları çalıştıran Merkezi İşlemcilerdir (CPU)
+İşlemcinin gerçekleştirebileceği işlemler oldukça basit yapıdadır.
+-hafızanın bir hücresinden başka bir hücresine veri taşıma (mov)
+-iki sayıyı toplama(add),çıkarma(sub),çarpma(mul) vb 
+İşlemciler mimarileri gereği sadece ikili sayı sistemleri ile gönderilen komutları anlamaktadır.
+Yüksek seviyeli kodlar işlemci tarafından direkt işletilemez(C,C++,pascal,python vb.)
+İşlemcilere ikili sayı sistemleri ile gönderilen komutlara makine kodu adı verilir
+Her işlemcinin gerçekleştirebileceği belirli sayıda komut bulunmaktadır.
+Bütün bu komutlara komut seti adı verilir.
+İkili sayı sistemleri makineler için uygun ama insanlar için değildir.
+Anlamlı kelimeler biz insanlar için daha anlaşılabilir.(Assembly dili)
+Sembolik dili ile yazılmış olan komutlar da gene makine diline çevrilmesi gerekmektedir. (Assembler programı)
+
