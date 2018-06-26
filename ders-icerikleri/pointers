@@ -1,0 +1,16 @@
+Göstericiler-İşaretçiler(pointers):
+	-C ve C++ dillerinin öğrenilmesi en zor yapılardır. Hafızaya direkt erişim yapabiliryoruz.
+	-Adres: Hafıza üniterleri bir baytlık hücrelerden oluşur. Hafızanın en küçük ünitesi 1 bayt tır. Her bir hücrenin farklı bir adresi vardır. Benzeri yoktur. Mesela 4gb lık bir hafızada 0 dan başlayıp 4294967295'e kadar verilmektedir.Adresler asla negatif bir sayı olamaz. Günümüzde kullanılan 32 bitlik işlemciler maksimum 4gb lık alanı işaretleyebilirler.Big endian ve little endian denen iki yerleştirme vardır. Birisi bellek hücreleri büyükten küçüğe doğru yerleştiriyor diğeri bellek hücrelerini küçükten büyüğe doğru yerleştiriyor.
+Biz bir değişkenin adresini görmek istersek (&degisken) operatörü ve değişkenini kullanarak başlangıç adresini görüntüleyebiliriz. Little veya big endian farketmez her zaman ilk adresi gösterir.
+	-İşaretçiler: Bir hafıza hücresinin adresini tutmak için kullanılıyor.Diyelim ki bir değişkenin hafızadaki adresini saklamak istersek bir işaretçi tanımlamamız gerekmektedir.Örnek olarak;
+	int *p=&degisken; -> buradaki kod degiskenin adresini p isimli pointerda tutmaktadır.Buradaki p pointerı hafızada 4 baytlık bir alan ayırıyor ve degiskenin adresini saklar.İşaretçinin türü hangi değişkenin adresini tutuyorsa o değişkenin türünde olmalıdır. Burada p işaretçisi değişken değişkenini gösteriyor. İşaretçiler ayrıyeten adresini tuttukları hafıza alanını veri okuma veri yazma için de kullanılıyor. Örnek olarak;
+	int sayi1=10;
+	int sayi2=15;
+	int* p;
+	p=&sayi1;
+	cout<<p; (burada sayi 1 değişkeninin adresini ekrana yazdırır.)
+	cout<<*p;(burada sayi 1 değişkeninin adresindeki veriyi gösterir.)
+stack yukarıdak aşağıya program çalışırken erişmemizi sağlıyor.Yerel(local) değişkenler ve fonksiyon,pointers çağrıları için kullanılır.
+heap aşağıdan yukarıya program çalışırken erişmemizi sağlıyor.Dinamik değişkenler için kullanılır.
+	
+

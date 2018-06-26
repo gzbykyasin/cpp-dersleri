@@ -1,0 +1,8 @@
+? 
+	konulduğu zaman soru işareti önündeki kodları kontrol ediyor.
+: 
+	den sonraki yer ise doğru değilse komutlarını kontrol ediyor.
+
+Örnek olarak:
+	
+	->cout<<(sayi>0)?"pozitif":"negatif";

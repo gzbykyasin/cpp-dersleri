@@ -1,0 +1,12 @@
+-Ekrana 10 defa merhaba yazmak için gerekli kod basit olarak:
+	*for(int i=0;i<=9;i++)
+		cout<<"merhaba";
+	*int i=0;
+	 while(i<10)
+	 	cout<<"merhaba";
+		i++;
+	*int i=0;
+	do:
+		cout<<"merhaba";
+		i++;
+	while(i<10);

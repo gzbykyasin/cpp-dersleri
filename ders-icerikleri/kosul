@@ -1,0 +1,5 @@
+-İşlemci kendisine verilen komutları sıra ile gerçekleştirir.
+-Bu çalıştırma sırasını if-else komutları ile değiştirmek mümkündür.
+-İstenilen koşula göre yapılacak komutları berlirleyip işlemci tarafından işlenmesini isteyebiliriz.
+-İstenilen koşul sağlanmazsa koşulun altındaki { } ile belirtilen komutlar işlenmez ve işlemci alttaki komutları işlemeye başlar.
+

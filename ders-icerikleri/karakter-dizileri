@@ -1,0 +1,7 @@
+Bilgisayar ekranında sadece karakter türündeki değişkenler çıkartılabilir.
+'a','b','0' gibi kelimeler de aslında karakter dizisi şeklinde ekrana çıkartılır. Hafızada her karakter için bir matris tutuluyor ve ekrana bu matris neticesinde karakterler yazılıyor. Tabi bunu arka planda yapıyor ve biz bundan pek etkilenmiyoruz. Karakter dizisini ekrana çıkartmak için de ekrandaki piksellerin bazılarının siyah bazılarının beyaz olması gerekiyor. Bunları 1 ve 0 lar gibi düşünebiliriz. Mesela siyahlar 1 olsun beyazlar 0. şimdi yapılacak işlemde piksellere göre karşılık gelecek şekilde 'a' harfi beyaz ve siyahlar olarak ekranda gösterilecek. Bu aslında çok detaylı bir kısımdır. Display de bir sayı yazdıran arkadaşlar burada ne demek istediğimizi anlayacaklar. 7 segment display için 1 rakamını yazdırmak istersek 3 bölgesine sinyal yolluyoruz diğer bölgelerine sinyal yollamadığımız için oralar kapalı kalmış oluyor ve bize 1 sayısı çıkıyor. Aynı durumun çok daha gelişmişi bilgisayar ekranları için de geçerlidir bunu ekran kartı ve işlemci arka planda yapmakta bizi uğraştırmamaktadır.
+ASCII tablosu dediğimiz tabloyu incelerseniz matrisleri ekrana yazdırmak için yazılacak kodları anlamış olursunuz.
+
+-strcopy(strAdi,"eklenecek-kelime");
+yukarıdaki kod karakter dizisine kelime eklemek için kullanılıyor.
+-string adında bir sınıf oluşturularak karakter dizilerini daha detaylı kullanabiliyoruz.

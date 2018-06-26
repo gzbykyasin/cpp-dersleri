@@ -1,0 +1,3 @@
+-Değişkenler tanımlandıkları { parantezi içerisinde varlıklarını sürdürürler.
+( yani diyelim ki main içerisinde bir değişken oluşturdunuz bunu farklı bir fonksiyon içerisinde kullanamazsınız. Fakat main içerisinde { parentezi kullanılarak oluşturulan başka bir etki alanında bu değişkeni kullanabilirsiniz. Ama dediğim gibi etki alanının alt etki alanında değişken çağırılabilir ama alt etki alanında tanımlanan değişken bir üst veya başka bir etki alanında çağırılamaz. )
+

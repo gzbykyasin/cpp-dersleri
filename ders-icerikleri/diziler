@@ -1,0 +1,7 @@
+Diziler birden fazla veri girmek için kullandığımız değişkenlerdir. Mesela sınıf içerisindeki not bilgisini tutabileceğimiz değişkeni 100 kişilik sınıf için kullanırsak a1 den a100 e kadar değişkenleri kendimiz oluşturmamız gerek. Ama diziler ile bunu daha kolay ve kullanışlı birşekilde oluşturmak mümkün.
+	Örnek kullanımı:
+		int diziAdı[DegiskenSayisi]
+		short diziAdı[DegiskenSayisi]
+Kullanımda dizi adresleri ardışık olarak sıralanır. Yani ilk eleman 0x00 adresinden başlıyorsa ikinci dizi (int için) 0x04 adresinden başlar.
+	diziAdı[0]=10;
+	dediğimizde dizinin ilk elemanına 10 değeri atansın demiş oluyoruz.

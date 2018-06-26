@@ -1,0 +1,19 @@
+Tekrarlanan işlemlerde fonksiyonları kullanırız. Mesle üs alma işlemi algoritmanın heryerinde kullanabileceğimiz birşey. Biz bu çok fazla komut gerektiren işlemleri algoritmanın heryerine tekrar tekrar yazmaktansa başka bir yerde tanımlayıp istediğimiz anda çağırıp kullanabiliyoruz. Bu bizi kod uzunluğundan ve kod karmaşasından kurtarıyor.
+Kullanımı:
+	int fonksiyon(int sayi)
+buradaki (int) dönüş değeridir. 
+(fonksiyon) fonksiyonun ismidir. Fonksiyon ismi ile değişken ismi aynı olmamalıdır.
+(int sayi) parametrelerdir. Kullanılacak fonksiyon kaç parametre alacak ona göre parametrelerimizi giriyoruz.
+
+Örnek bir fonksiyon yazarsak:
+	int faktoriyel(int sayi)
+{
+	int sonuc=1;
+	for(int i=1;i<sayi;i++)
+	{
+		sonuc=sonuc*i;
+	}
+	return sonuc;
+}
+
+void fonksiyonları dönüş değeri vermeyen fonksiyonlardır.

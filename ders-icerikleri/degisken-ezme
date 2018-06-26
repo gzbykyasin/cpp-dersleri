@@ -1,0 +1,4 @@
+-Farklı etki alanlarında aynı isimde değişne tanımlanabilir. Fakat bu değişkenlerden en son tanımlanan diğerlerini bastırır. Algotirmanın yani programın yukarıdan aşağı dogru bir yol izlemesi neticesinde en son tanımlanan değişken bellekte saklanır ondan önceki tanımlanmış olan değişkenlerin üzerine yazılarak gidilir.
+( yani etki alanının alt etki alanlarında tanımlanırsa yukarıdaki söz dizimi daha net anlaşılmış olur )
+
+- const operandı sabit değişkenleri tanımlamak için kullanırız. Dizilerde değer ataması vs yaparken kullanımı işimize yarayabilir.
