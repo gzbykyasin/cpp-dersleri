@@ -1,0 +1,50 @@
+Sınıf oluşturulurken amacımız gerçek dünyadaki nesneleri sanal dünyaya aktarmaktı. Aktarılan kimi nesnelerin birçok ortak özelliği bulunmaktadır.Örnek olarak;
+	class calisan
+	{
+	public:
+		char ad[50];
+		char soyad[50];
+		int yas;
+		int tc;
+		void kisiselbilgiyaz()
+		{	
+			cout<<ad<<soyad<<yas<<tc;
+		}
+	}
+	class ogrenci:public calisan
+	{
+		public:
+			int sinif;
+			void ogrencibilgiyaz()
+			{
+				cout<<sinif;	
+			}
+	}
+	class akademisyen:public calisan
+	{
+		public:
+			int bolumkodu;
+			void akademisyenyaz()
+			{
+				cout<<bolumkodu;
+			}
+	}
+
+Yukarıdaki örneğe bakacak olursak calısan nesnemiz hem ogrenci hemde akademisyen nesnesi için ortak özelliklere sahip. Yani biz ogrenci ve akademisyen nesnelerini oluştururken calısan nesnesindeki bilgileri de dahil etmemiz gerekiyor. Bunun yerine ogrenci ve akademisyen nesnemize calısan nesnesinden kalıtım(ortaklık) alıyoruz. Kod fazlalığını ve karmaşasını bi nebze olsun azaltıyor ve tüm alandalı etkileyecek bir değişim söz konusu olduğunda sadece ortak alınan nesnenin değişkenlerini veya fonksiyonlarını değiştirmek yeterli oluyor.
+Kalıtım alınmış nesne oluşturulduğunda ilk olarak temel sınıfın kurucu fonksiyonu çağrılır.Yani once calısan sınıfının kurucu fonksiyonu daha sonra ogrenci veya akademisyen sınıfının kurucu fonksiyonu çağırılır.
+Yok edici fonksiyonlar(deconstructor ) da tam tersi şeklinde çağrılır.
+
+Dönüşüm(cast):
+Aralarında kalıtım ilişkisi bulunan türleri dönüştürmek mümkündür.
+Tip dönüşümlerinde işaretçiler veya referanslar kullanılır.Gene calısan sınıfından kalıtım alarak ogrenci ve akademisyen sınıflarını oluşturursak;
+	int main()
+	{
+		ogrenci ogr1;
+		calisan* c1=(calisan*)&ogr1;
+		
+		akademisyen akd1;
+		calisan* c2=(calisan*)&akd1;
+	}
+
+
+

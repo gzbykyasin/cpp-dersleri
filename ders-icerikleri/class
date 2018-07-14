@@ -1,0 +1,73 @@
+
+Yazılım mühendisleri bildiğiniz üzere ilk başta makine kodlarıyla işlem yapmanın çok zor olduğunın farkına vardıktan sonra yeni arayışlara girdiler. İlk başta assembyl(sembolik dil) geliştirildi. Bu dilden sonra her işlemci için değişebilen ve makine dili kadar zor algoritmalar geliştirimesi sonucu ve aynı zamanda takım çalışmasının mümkün olmaması neticesinde tekrar yeni arayışlara girdiler. Fortran ve c bu arayışlar sonucu çıkan dillerdendir. Bu dillerin özelliği işlemci özelliklerini bilmeden derleme yoluyla işlemciye uygun makine kodlarına dönüşüm sağlanabilmesi ve programlayıcı(coder) tarafında işleri kolaylaştırmasıydı. Fakat genede bu diller büyük projelerde takım çalışması için pek uygun değildi. Tam da bu noktadan sonra C++ gibi yüksek seviyeli diller geliştirilmeye başlandı. Hala da geliştirlmeye devam ediyor(java gibi,c# gibi,javascript gibi). Hepsinin yani tüm bu geliştirilen dillerin ortak özelliği coder tarafında işleri kolaylaştırmak. Ama yapılan işlem aslında hepsinde de aynı. Makine kodları dönüşüm. C++ gibi bir dil yüksek seviyeli dil olmasına rağmen sistem mühendisleri tarafından kullanılmasının en önemli nedeni işlemci ile direkt temas haline geçebilmemiz. Bu dil işlemciler değişmediği, yazılan işletim sistemleri değişmediği sürece tüm dünya tarafından kullanılan ve kullanılmaya devam eden bir dil olarak yerini koruyacaktır. 
+Sınıf(class) yapısı:
+	veri ile onu manipüle edecek fonksiyonu ortak bir yapı içerisinde kullanabiliyoruz. Genellikle gerçek dünyadaki nesneleri sanal dünyada modelleme için kullanılıyor(struck gibi).
+Öğrenci otomasyon sisteminden gene örnekler vererek çalışmalara başlayalım.
+Öğrenci isim,soyisim,numara,ortalama bilgilerine sahip olsun ve veriler dışardan girilebilsin aynı zamanda istenildiğinde ekrana çağrılabilsin.
+
+class ogrenci
+{
+public:
+	char ad[50];
+	char soyad[50];
+	int numara;
+	float ortalama;
+void ogrencigir(){
+	cin>>ad;
+	cin>>soyad;
+	cin>>numara;
+	cin>>ortalama;
+}
+void ogrenciyaz(){
+	cout<<ad<<" "<<soyad<<endl<<numara<<" "<<ortalama<<endl;
+}
+bool ogrencidurum(){
+if(ortalama<2.0)
+	return false;
+return true;
+}
+};
+Erişim Belirteçleri:
+
+Buradaki public erişim belirtecidir. İlgili sınıfa ait erişebileceğimiz tüm değişkenler,yapılar,fonksiyonlar burada belirtilir.Dışarıdan erişebilir anlamına gelir. private ve protected  ise sadece sınıf içerisinde kullanılacak ve dışardan kullanıcının(programcının) erişemeyeceği değişkenler,yapılar,fonksiyonalrdır.
+
+Üye fonksiyonlar:
+Ait oldukları nesnenin tüm elemanlarına erişebiliyorlar. public veya private olarak tanımlanmış değişkenlere erişebiliyorlar.
+Nesne oluşturduktan sonra çağırabiliyorlar. Main içerisinde oluşturduğumuz sınıfa ait nesne sayesinde çağırılma gerçekleştiriliyor. Sınıf ismi ile çağırılmıyor.
+ 
+Kurucu Methot(constructor):
+Her nesne oluşturulurken arka planda bir methot çağırırlar. Bu methodlara kurucu methot denir. Kurucu methodlar tanımlandıkları sınıf ile aynı isme sahiptirler.
+ Örnek olarak;
+	class Ogrenci{
+		public:
+			int yukseklik;
+			int genislik;
+		Ogrenci()
+		{
+			yukseklik=0;
+			genislik=0;
+		}
+	}
+Genellikle kurucu fonksiyonları kullanırken değişkenlerimize ilk değeri atıyoruz. Fakat şunu unutmalayım nesne ile aynı isme sahip olmalıdır.Biz bu yapıyı tasarlamasak bile derleyici otomatikman kendisi boş bir kurucu fonksiyon ekleyecektir.
+Yok Edici Method(Destructor):
+Nasıl ki nesnemiz başladığı anda heap de değil stackta yer aldırdıysak ( yani new operatörünü kullanmadan nesne oluşturduysak) etki alanı bittiğinde gene bir gizli fonksiyon çağırmaktadır. Bu fonksiyon constructor gibi arka planda derleyicinin kendi oluşturduğu bir fonksiyon olmakla beraber biz sınıfımız içerisinde oluşturabiliriz. Örnek olarak;
+	class Ogrenci{
+	private:
+		int yukseklik;
+		int genislik;
+	public:
+		Ogrenci(){
+			yukseklik=10;
+			genislik=20;
+		}
+		void alanbul(){
+			cout<<yukseklik*genislik;
+		}
+		~Ogrenci(){
+			yukseklik=0;
+			genislik=0;
+			cout<<"yok edildi"<<endl;
+		}
+	};
+
+Destructor stackte değide heap biriminde alan ayrıldığı zaman daha çok işimize yarıyor. Çünkü stack pointer derleyici tarafından kontrol edildiği için etki alanı bittiğinde alanları otomatik kendi yok ediyor. Fakat heap de alanların kontrolü bizde olduğu için yok edici methodu çağırmalıyız ki işlemci boş alanları bulup hafızada gereksiz yer işgal etmesin.

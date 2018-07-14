@@ -13,4 +13,30 @@ Biz bir değişkenin adresini görmek istersek (&degisken) operatörü ve deği�
 stack yukarıdak aşağıya program çalışırken erişmemizi sağlıyor.Yerel(local) değişkenler ve fonksiyon,pointers çağrıları için kullanılır.
 heap aşağıdan yukarıya program çalışırken erişmemizi sağlıyor.Dinamik değişkenler için kullanılır.
 	
+afızada bütün kodlarının saklandığı alandan başlayarak yüklenmeye başlıyor.İşlemcinin en çok ilgilendiği kısım burasıdır. Hemen ardından global değişkenler için ayrılmış alan vardır. Atanmış ve atanmamış veriler ayrılmıştır. Atanmış veriler bizim kodlarken herhengi bir değişkenin ilk değerini atadığımız değişken diğeri gene algoritmada kullandığımız fakat başlangıç değerini atamadığımız değişkenlerdir.
+stack yukarıdan başlayarak aşağıya doğru hafıza alanını kullanıyor.(0x6... den 0x4...  e kadar olarak düşünebiliriz.).Stack i kontrol etmek için SP(Stack Pointer) a ihtiyaç vardır. Yerleştirilen verileri makine otomatik olarak değişken tipine göre azaltarak işlemeye başlıyor.Örnek olarak;
+        int a=15;
+        char d[]="Yasin";
+        {
+                int b=25;
+
+        }
+Yukarıdaki örnekten de açıklayacak olursak a değişkeninin hafızada tuttuğu alandan balayarak aşağı doğru veriler yazılmaya başlanıyor. Fakat fonksiyon kullanılma durumunda fonksiyonla işimiz bittikten sonra hafızadan silindiği için yeni veri eklemeler karışabiliyor. Yani diyelim ki a bir pointer ve b nin adresini tutuyor. b değişkeni de bir fonksiyon çağrıldıktan sonra hafızaya alınıyor. Fonksiyon çağrımı bittikten sonra b nin gösterdiği alan SP sayesinde fonksiyonun adresini gösterecektir ve b değişkenini o adrese yazacaktır.Bu durumda a değişkeni hafızada b nin yeni adresini değil de eski adresini gösterecektir ve sonuç doğru olacaktır ama büyük projelerde b nin altına veriler eklendiğini düşündüğümüzde SP sayesinde veriler alta doğru üzerine yazılarak gideceği için a değişkeni bu sefer de b değişkenini üzerine yazılmış bir alanı gösterecektir.Görüldüğü gibi bu durumda pointer kullandığımızda istenilen veriye erişme imkanımız ortadan kalkıyor ve bize istemedğimiz sonuçları veriyor. Stack in bu dezavantajları yüzünden heap geliştirilmiş ve belleği dinamik birşekilde kullanmamız sağlanmıştır.
+heap ise stack'in tam tersidir(0x1... den 0x4... e kadar). Yığının kontrolünü ele almak için kullanırız. Yığında(stack te ) yaratılan değişkenler etki alanları bittiğinde hafızadan atılır. Global değişkenleri kullanarak oluşturursak bu sefer de hafızada fix boyuta sahip olduğundan ne büyütebiliyoruz nede küçültebiliyoruz. Tüm bu sorunları çözmek için heap hafıza birimini kullanırız. Heap hafıza bölgesinde değişken olşuturmak için new operatörünü kullanırız.
+ int *p=new int;(int tipinde heap biriminden 4 bayt lık yer ayır ve p pointırına ata)
+new opertörü işlemi bitirdikten sonra oluşturduğu değişkenin başlangıç adresini getirir.
+Bu adresi bir işaretçi içerisinde saklayarak yeni oluşturulan değişkeni kullanabiliriz.
+Heap biriminde oluşturmak istediğimiz alan hafıza biriminin en alt adresinden başlayarak bize uygun birimi bulana kadar aramaya başlar. Alan bulunduğunda başlangıç adresini pointerımıza atar. Daha sonra biz verilerimizi eklemeye başlarız ve verilerimize pointer yardımıyla başlangıç adresinden erişiriz. Diyelim ki bir dizi oluşturduk ve oluşturduğumuz diziye eklemeler yapmak istiyoruz. Bunun için ilk başta pointerımızda gösterilen adrese giderek verilerimizi yeni bir heap alanına taşırız. Daha sonra eski alanı delete[](köşeli parantez dizi olduğunu göstermek için) fonksiyonunu kullanarak eski alanımızı sileriz. taşıma yaptığımmız değişkeni pointerımıza atayarak yeni verilerimizin saklı olduğu yerin başlangıç adresini vermiş oluruz. Silme işlemini yapmazsak program çalışması süresinde heap biriminde eski alanımız kullanılıyor olarak gözükecek ve başka bir alan ayırmak istediğimizde o alanı kullanması gerekirken kullanamayacaktır. Bu büyük projelerde devasa bir sorundur bu yüzden dinamik bellek kullanırken verileri taşıma yapma esnasında eski alanı silmek en istenilen çözümdür.Örnek olarak;
+        int *p=new int[5];
+        for(int i=0;i<5;i++)
+                p[i]=i*i;
+        int *temp=new int[8];
+        for(int i=0;i<5;i++)
+                *temp(0+i)=*p(0+i);
+        delete[] p;
+        p=temp;
+        for(int i=5;i<8;i++)
+                p(0+i)=i*i;
+
+
 

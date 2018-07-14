@@ -1,0 +1,25 @@
+Normalde değişkenleri tanımlarken somut veya soyut nesneleri tanımlamak için kullanırız. Mesela bir isim veya bir sayı tutarız hafızada. Yeni değişkenler oluşturmak için ise diyelim ki bir insanın özelliklerini sistemde tutmak istiyoruz ismini yaşını doğum tarihini farklı faklı değişkenlerde tutmamız gerekir. Hepsi için ortak bir payda oluşturabileceğimiz yani birden fazla değişkeni tek bir alanda kullanabileceğimiz yapılar c c++ programlama dilinde mevcuttur ve biz bu yapılara struct(yapı) deriz.
+Birden fazla değişkeni tek bir değişken türü gibi tanımlamamıza izin veriyor.
+Örnek kullanımı;
+	struct Insan{
+		char Ad[100];
+		char SoyAd[100];
+		int TCNo;
+		int DogumYili;
+	};
+	Insan Ogrenci1:
+	
+Yapı içerisindeki elemanlara erişmek için . operatörünü kullanırız.
+	Ogrenci1.TCNo=1234;
+	cout<<"Ogrenci Ad Girin:\t";
+	cin>>Ogrenci1.Ad
+Struclarda hafızaya yerleşim aynı dizilerde olduğu gibi alt adresten üst adrese doğrudur. Yani yapınızda iki tane int türünden değişken var ve siz bu değişkenleri çağırmış iseniz ilk başta yapıdaki toplam alan kadar bir alan bloklanır ve bu struc'ın alanı olmuş olur. Daha sonra stack 'te heap gibi davranarak alttan üste doğru değişken türlerini yerleştirmeye başlar.Buradaki heap benzetmesini karıştırmayın sadece mantıksal olarak yerleşme biçimini ifade etmek için kullandım.( Yukarıdaki örnek için bellekte toplam 12 baytlık alan kaplanır. 0x...c0 dan 0x...80 a kadar. Ad değişkeni  0x...80 da Soyad değişkeni 0x...60 da TCNo değişkeni 0x...40 da DogumYili değişkeni 0x...00 dan başlayarak verileri yazmaya başlar toplamda 12 baytlık bir alan tanımlanmış olur. Bu alandaki verilere erişmek için nokta operatörünü kullanarak istediğimiz veriye erişme ve üzerine yeni veri yazarak değiştirme imkanımız vardır.
+Fonksiyonlar struclar ile kullanarak adres olarak çağırabilir ve kullanabiliriz.Bu bize yığında yeni alanlar yapmak yerine o alanı kullanma imkanı verir.Yapıya adres ile erişmek istiyorsak . operatörü ile değil -> operatörü ile kullanmamız gerekiyor.Örnek olarak;
+	int Degisken(Insan* ogr){
+		ogr->TcNo=1234;
+	}
+C++ dilinde bu -> operatörü kullanmak kodlayıcı açısından zor ve okunması karmaşık bir yapı olduğundan şu şekilde de kodlamamız için bir yardımcı operatör kullanılmış.
+	int Degisken(Insan& ogr){
+		ogr.TcNo=1234;
+	}
+Buradaki & operatörü adres bilgisini bir pointer gibi döndürebiliyor. Tek farklı değişkene . opearatörü ile erişme imkanı sunuyor.Burada main fonksiyonda çağırdığımız zaman adres bilgisini istememesini unutmayalım.
