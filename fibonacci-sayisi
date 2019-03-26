@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+ 
+/* 
+ * File:   main.cpp
+ * Author: YASIN
+ *
+ * Created on 26 Mart 2019 Salı, 21:24
+ */
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+ 
+typedef struct n{    
+    uint64_t x;
+    n *next;
+    n *prev;
+} node;
+ 
+node * setFibo(){    
+    node * r=(node *)malloc(sizeof(node));    
+    r->x=0;
+    r->prev==NULL;  
+    r->next=NULL;
+    return r;
+}
+node * pushFibo(node *r,int n){
+        
+    if(r->prev==NULL && r->next==NULL){
+        node *temp=(node *)malloc(sizeof(node));        
+        temp->x=1;
+        temp->prev=r;
+        temp->next=NULL;
+        r->next=temp;   
+        free(temp);
+    }
+    node *iter=r->next;
+    
+    for(int i=0;i<n;i++){
+        node *temp=(node *)malloc(sizeof(node));
+        temp->x = ( iter->x + iter->prev->x );
+        temp->prev=iter;
+        temp->next=NULL;
+        iter->next=temp;
+        iter=iter->next;
+    }
+    return r;   
+}
+ 
+void getFibo(node *r){
+    
+    while(r!=NULL){
+        cout << r->x << ",";
+        r=r->next;
+    }    
+}
+ 
+ 
+/*
+ * Test
+ */
+int main(int argc, char** argv) {
+    node *root=setFibo();
+    root=pushFibo(root,50);
+    getFibo(root);
+    return 0;
+}
