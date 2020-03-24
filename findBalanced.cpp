@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     if (argc < 2)
         exampleBalance = "[[()[]{}[]())(]}{{()}][({";
     else
-        exampleBalance = argv[0];
+        exampleBalance = argv[1];
 
     std::cout << "Find Balance Training!\n"; 
     
