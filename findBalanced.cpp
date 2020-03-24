@@ -2,7 +2,7 @@
  * @brief 
  *      you're given a string that contains opening and closing brackets.
  *      you need to parse through the string and determine if the brackets are balanced
- *
+ *      exampleBalance = "[[()[]{}[]())(]}{{()}][({";
  *  Created on: 24 Mar 2020
  *      Author: YASIN GOZUBUYUK
  */
